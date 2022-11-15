@@ -7,6 +7,34 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     cursorY += -10
     drawGrid()
 })
+function neghborcountwraptop (currentrow: string, currentcol: string) {
+    neighbor_count = 0
+    if (0 == 0) {
+        neighbor_count += grid[11][15]
+    } else {
+        neighbor_count += grid[0 - 1][0 - 0]
+    }
+    if (0 == 0 && (0 as any) == (15 as any)) {
+        neighbor_count += grid[11][0]
+    } else if (0 == 0) {
+        neighbor_count += grid[11][0 + 1]
+    } else {
+        neighbor_count += grid[0 - 1][0 - 1]
+    }
+    if ((0 as any) == (15 as any)) {
+        neighbor_count += grid[11][0]
+    } else {
+        neighbor_count += grid[0 - 0][0 + 1]
+    }
+    if (0 == 0 && (0 as any) == (15 as any)) {
+        neighbor_count += grid[11][0]
+    } else if (0 == 0) {
+        neighbor_count += grid[11][0 + 1]
+    } else {
+        neighbor_count += grid[0 - 1][0 + 1]
+    }
+    return neighbor_count
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     grid[cursorGridRow][cursorGridCol] = grid[cursorGridRow][cursorGridCol] * -1 + 1
     drawGrid()
@@ -16,6 +44,19 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     cursorX += -10
     drawGrid()
 })
+function countneighbors2 (current_row: number, Currentcolumn: number) {
+    neighbor_count = 0
+    if (current_row == 0 && Currentcolumn == 0) {
+        neighbor_count += grid[11][15]
+    } else if (current_row == 0) {
+        neighbor_count += grid[11][Currentcolumn - 1]
+    } else {
+        neighbor_count += grid[current_row - 1][Currentcolumn - 1]
+    }
+}
+function copyleft (whichrow: number) {
+    return grid[whichrow][0]
+}
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     cursorGridCol += 1
     cursorX += 10
@@ -95,11 +136,20 @@ function countneighbors (current_row: number, Currentcolumn: number) {
     }
     return neighbor_count
 }
-let neighbor_count = 0
+function CopyRight (whichrow: number) {
+    return grid[whichrow][15]
+}
+function copybottom () {
+    return grid[11]
+}
+function copyTop () {
+    return grid[0]
+}
 let gridSprite: Sprite = null
 let currentX = 0
 let currentY = 0
 let gridSprites: Sprite[] = []
+let neighbor_count = 0
 let neighbor_count_sprite: TextSprite = null
 let cursorY = 0
 let cursorX = 0
