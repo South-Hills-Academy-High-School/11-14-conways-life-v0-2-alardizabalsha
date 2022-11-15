@@ -51,8 +51,8 @@ function drawGrid () {
     }
     cursor.left = cursorX
     cursor.top = cursorY
-    neighbor_count_sprite.right = cursorX
-    neighbor_count_sprite.bottom = cursorY
+    neighbor_count_sprite.left = cursorX
+    neighbor_count_sprite.top = cursorY
     neighbor_count_sprite.setText(convertToText(countneighbors(cursorGridRow, cursorGridCol)))
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -126,10 +126,10 @@ cursor = sprites.create(img`
     3 . . . . . . . . 3 
     3 3 3 3 . . 3 3 3 3 
     `, SpriteKind.newCursor)
-cursorGridCol = 0
-cursorGridRow = 0
-cursorX = 0
-cursorY = 0
+cursorGridCol = 7
+cursorGridRow = 5
+cursorX = 70
+cursorY = 50
 cursor.z = 10
 neighbor_count_sprite = textsprite.create("")
 neighbor_count_sprite.z = 10
